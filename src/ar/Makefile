@@ -13,8 +13,8 @@ files.out :
 	echo ABCDEF > file17xxxxxxx.txt
 
 ar.out :	files.out
-	echo "% /usr/libexec/aout/ar ruc bsdar.a file*.txt" > ar.out
-	/usr/libexec/aout/ar ruc bsdar.a file*.txt
+#	echo "% /usr/libexec/aout/ar ruc bsdar.a file*.txt" > ar.out
+#	/usr/libexec/aout/ar ruc bsdar.a file*.txt
 	echo "% /usr/bin/ar ruc gnuar.a file*.txt" >> ar.out
 	/usr/bin/ar ruc gnuar.a file*.txt
 
@@ -36,18 +36,13 @@ ardump :	ardump.c
 ardump.exec :	ardump ar.out
 	echo "% ./ardump ardump.o" > ardump.exec
 	./ardump ardump.o > ardump.exec.tmp 2>&1
-	cat ardump.exec.tmp | head -n 15 >> ardump.exec
-	cat ../../rest.txt >> ardump.exec
+	cat ardump.exec.tmp >> ardump.exec
 	echo "% " >> ardump.exec
 
 ardump.exec2 :	ardump ar.out
 	echo "% ./ardump /usr/lib/libc.a" > ardump.exec2
-	./ardump /usr/lib/libc.a > ardump.exec2.tmp 2>&1
-	cat ardump.exec2.tmp | head -n 6 >> ardump.exec2
-	cat ../../ellipsis.txt >> ardump.exec2
-	cat ardump.exec2.tmp | head -n 77 | tail -n 20 >> ardump.exec2
-	cat ../../ellipsis.txt >> ardump.exec2
-	cat ardump.exec2.tmp | tail -n 5 >> ardump.exec2
+	./ardump /usr/lib64/libc.a > ardump.exec2.tmp 2>&1
+	cat ardump.exec2.tmp >> ardump.exec2
 	echo "% " >> ardump.exec2
 
 clean :

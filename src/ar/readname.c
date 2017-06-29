@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
       } else {
 	fname = arhdr->ar_name;
       }
-      printf("%.*s\t%d\n", strchr(fname, '/') - fname, fname, size);
+      printf("%.*s\t%d\n", (int)(strchr(fname, '/') - fname), fname, size);
     }
     if (size % 2) size++;
   }

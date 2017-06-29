@@ -1,73 +1,77 @@
 Sections:
 	[0]	
 	[1]	.text
-	[2]	.rel.text
+	[2]	.rela.text
 	[3]	.data
 	[4]	.bss
-	[5]	.note
-	[6]	.rodata
-	[7]	.comment
-	[8]	.shstrtab
-	[9]	.symtab
-	[10]	.strtab
+	[5]	.rodata
+	[6]	.comment
+	[7]	.note.GNU-stack
+	[8]	.eh_frame
+	[9]	.rela.eh_frame
+	[10]	.shstrtab
+	[11]	.symtab
+	[12]	.strtab
 Segments:
 Symbols:
 	[1]	4	0	ardump.c
-	[5]	0	0	gcc2_compiled.
-	[7]	2	1241	elfdump
-	[10]	0	0	__stderrp
-	[11]	0	0	fprintf
-	[12]	0	0	printf
-	[13]	0	0	strcmp
-	[14]	2	602	main
-	[15]	0	0	open
-	[16]	0	0	exit
-	[17]	0	0	fstat
-	[18]	0	0	mmap
-	[19]	0	0	memcmp
-	[20]	0	0	atoi
-	[21]	0	0	strchr
-	[22]	0	0	munmap
-	[23]	0	0	close
+	[6]	2	1421	elfdump
+	[10]	0	0	stderr
+	[11]	0	0	fwrite
+	[12]	0	0	fprintf
+	[13]	0	0	puts
+	[14]	0	0	printf
+	[15]	0	0	strcmp
+	[16]	0	0	putchar
+	[17]	2	671	main
+	[18]	0	0	open
+	[19]	0	0	exit
+	[20]	0	0	fstat
+	[21]	0	0	mmap
+	[22]	0	0	memcmp
+	[23]	0	0	atoi
+	[24]	0	0	strchr
+	[25]	0	0	munmap
+	[26]	0	0	close
 Relocations:
-	[1]	10	__stderrp
-	[2]	11	fprintf
-	[4]	10	__stderrp
-	[5]	11	fprintf
-	[7]	10	__stderrp
-	[8]	11	fprintf
-	[10]	12	printf
-	[12]	12	printf
-	[14]	13	strcmp
-	[16]	12	printf
-	[18]	12	printf
-	[20]	12	printf
-	[22]	12	printf
-	[24]	12	printf
-	[26]	12	printf
-	[28]	12	printf
-	[30]	12	printf
-	[31]	15	open
-	[32]	16	exit
-	[33]	17	fstat
-	[34]	18	mmap
-	[36]	19	memcmp
-	[38]	10	__stderrp
-	[39]	11	fprintf
-	[40]	20	atoi
-	[42]	19	memcmp
-	[44]	10	__stderrp
-	[45]	11	fprintf
-	[47]	19	memcmp
-	[49]	10	__stderrp
-	[50]	11	fprintf
-	[52]	10	__stderrp
-	[53]	11	fprintf
-	[54]	16	exit
-	[55]	20	atoi
-	[56]	21	strchr
-	[58]	10	__stderrp
-	[59]	11	fprintf
-	[60]	22	munmap
-	[61]	23	close
-	[62]	16	exit
+	[0]	10	stderr
+	[2]	11	fwrite
+	[3]	10	stderr
+	[5]	12	fprintf
+	[6]	10	stderr
+	[8]	12	fprintf
+	[10]	13	puts
+	[12]	14	printf
+	[14]	15	strcmp
+	[16]	13	puts
+	[18]	14	printf
+	[20]	14	printf
+	[21]	16	putchar
+	[23]	13	puts
+	[25]	14	printf
+	[27]	13	puts
+	[29]	14	printf
+	[30]	18	open
+	[31]	19	exit
+	[32]	20	fstat
+	[33]	21	mmap
+	[35]	22	memcmp
+	[36]	10	stderr
+	[38]	11	fwrite
+	[39]	23	atoi
+	[41]	22	memcmp
+	[42]	10	stderr
+	[44]	11	fwrite
+	[46]	22	memcmp
+	[47]	10	stderr
+	[49]	11	fwrite
+	[50]	10	stderr
+	[52]	11	fwrite
+	[53]	19	exit
+	[54]	23	atoi
+	[55]	24	strchr
+	[56]	10	stderr
+	[58]	12	fprintf
+	[59]	25	munmap
+	[60]	26	close
+	[61]	19	exit
