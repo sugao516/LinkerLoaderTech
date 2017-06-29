@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 extern int num;
 void printnum();
 void func1();

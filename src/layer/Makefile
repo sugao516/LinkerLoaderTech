@@ -182,5 +182,5 @@ layer_lib_local.o.nm :	layer_lib_local.o
 	echo "% " >> layer_lib_local.o.nm
 
 clean :
-	rm -f $(OBJS) *.comp
+	rm -f $(OBJS) *.o *.comp
 
