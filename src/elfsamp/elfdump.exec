@@ -2,21 +2,16 @@
 Sections:
 	[0]	
 	[1]	.interp
-
-        ...(ÃæÎ¬)...
-
+ï¼ˆç•¥ï¼‰
+	[25]	.bss
+	[26]	.comment
+	[27]	.shstrtab
+	[28]	.symtab
+	[29]	.strtab
 Segments:
 	[0]	
 	[1]	.interp 
-	[2]	 .interp .note.ABI-tag .hash .dynsym .dynstr .rel.bss .rel.plt .init .plt .text .fini .rodata 
-	[3]	.data .eh_frame .dynamic .ctors .dtors .got .bss 
+	[2]	 .interp .note.ABI-tag .note.gnu.build-id .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame 
+	[3]	.init_array .fini_array .jcr .dynamic .got .got.plt .data .bss 
 	[4]	.dynamic 
-	[5]	.note.ABI-tag 
-Symbols:
-	[25]	4	0	crtstuff.c
-	[26]	0	0	gcc2_compiled.
-	[27]	1	0	p.3
-
-        ...(¸åÎ¬)...
-
 % 

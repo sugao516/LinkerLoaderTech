@@ -1,12 +1,14 @@
 % ./readsec elfsamp.o
 
 .text
-.rel.text
+.rela.text
 .data
 .bss
-.note
 .rodata
 .comment
+.note.GNU-stack
+.eh_frame
+.rela.eh_frame
 .shstrtab
 .symtab
 .strtab

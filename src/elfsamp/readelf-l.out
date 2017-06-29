@@ -1,25 +1,31 @@
 % readelf -l elfsamp
 
 Elf file type is EXEC (Executable file)
-Entry point 0x80483dc
-There are 6 program headers, starting at offset 52
+Entry point 0x400490
+There are 9 program headers, starting at offset 64
 
 Program Headers:
-  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
-  PHDR           0x000034 0x08048034 0x08048034 0x000c0 0x000c0 R E 0x4
-  INTERP         0x0000f4 0x080480f4 0x080480f4 0x00019 0x00019 R   0x1
-      [Requesting program interpreter: /usr/libexec/ld-elf.so.1]
-  LOAD           0x000000 0x08048000 0x08048000 0x005e4 0x005e4 R E 0x1000
-  LOAD           0x0005e4 0x080495e4 0x080495e4 0x000f0 0x0011c RW  0x1000
-  DYNAMIC        0x0005fc 0x080495fc 0x080495fc 0x000b0 0x000b0 RW  0x4
-  NOTE           0x000110 0x08048110 0x08048110 0x00018 0x00018 R   0x4
+  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align
+  PHDR           0x000040 0x0000000000400040 0x0000000000400040 0x0001f8 0x0001f8 R E 0x8
+  INTERP         0x000238 0x0000000000400238 0x0000000000400238 0x00001c 0x00001c R   0x1
+      [Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]
+  LOAD           0x000000 0x0000000000400000 0x0000000000400000 0x00087c 0x00087c R E 0x200000
+  LOAD           0x000e08 0x0000000000600e08 0x0000000000600e08 0x00022c 0x000248 RW  0x200000
+  DYNAMIC        0x000e20 0x0000000000600e20 0x0000000000600e20 0x0001d0 0x0001d0 RW  0x8
+  NOTE           0x000254 0x0000000000400254 0x0000000000400254 0x000044 0x000044 R   0x4
+  GNU_EH_FRAME   0x0006dc 0x00000000004006dc 0x00000000004006dc 0x00004c 0x00004c R   0x4
+  GNU_STACK      0x000000 0x0000000000000000 0x0000000000000000 0x000000 0x000000 RW  0x10
+  GNU_RELRO      0x000e08 0x0000000000600e08 0x0000000000600e08 0x0001f8 0x0001f8 R   0x1
 
  Section to Segment mapping:
   Segment Sections...
    00     
    01     .interp 
-   02     .interp .note.ABI-tag .hash .dynsym .dynstr .rel.bss .rel.plt .init .plt .text .fini .rodata 
-   03     .data .eh_frame .dynamic .ctors .dtors .got .bss 
+   02     .interp .note.ABI-tag .note.gnu.build-id .gnu.hash .dynsym .dynstr .gnu.version .gnu.version_r .rela.dyn .rela.plt .init .plt .text .fini .rodata .eh_frame_hdr .eh_frame 
+   03     .init_array .fini_array .jcr .dynamic .got .got.plt .data .bss 
    04     .dynamic 
-   05     .note.ABI-tag 
+   05     .note.ABI-tag .note.gnu.build-id 
+   06     .eh_frame_hdr 
+   07     
+   08     .init_array .fini_array .jcr .dynamic .got 
 % 

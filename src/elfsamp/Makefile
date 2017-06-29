@@ -1,8 +1,8 @@
 OBJS=	elfsamp elfsamp.exec \
 	readelf-h.out readelf-x.out readelf-l.out \
-	readelf-S.out readelf-s.out readelf-r.out \
+	readelf-S.out readelf-s2.out readelf-r.out \
 	readelf-o-h.out readelf-o-x.out readelf-o-l.out \
-	readelf-o-S.out readelf-o-s.out readelf-o-r.out \
+	readelf-o-S.out readelf-o-s2.out readelf-o-r.out \
 	text_off-o-S.out text_vaddr-l.out \
 	data_off-l.out data_vaddr-l.out data_fsize-l.out data_msize-l.out \
 	shstr-o-h.out shstr_idx-o-h.out \
@@ -31,13 +31,13 @@ readelf-h.out :	elfsamp
 
 readelf-S.out :	elfsamp
 	echo "% readelf -S elfsamp" > readelf-S.out
-	readelf -S elfsamp >> readelf-S.out
+	readelf -S -W elfsamp >> readelf-S.out
 	echo "% " >> readelf-S.out
 
-readelf-s.out :	elfsamp
-	echo "% readelf -s elfsamp" > readelf-s.out
-	readelf -s elfsamp >> readelf-s.out
-	echo "% " >> readelf-s.out
+readelf-s2.out :	elfsamp
+	echo "% readelf -s elfsamp" > $@
+	readelf -s elfsamp >> $@
+	echo "% " >> $@
 
 readelf-r.out :	elfsamp
 	echo "% readelf -r elfsamp" > readelf-r.out
@@ -46,12 +46,12 @@ readelf-r.out :	elfsamp
 
 readelf-l.out :	elfsamp
 	echo "% readelf -l elfsamp" > readelf-l.out
-	readelf -l elfsamp >> readelf-l.out
+	readelf -l -W elfsamp >> readelf-l.out
 	echo "% " >> readelf-l.out
 
 readelf-x.out :	elfsamp
-	echo "% readelf -x 22 elfsamp" > readelf-x.out
-	readelf -x 22 elfsamp >> readelf-x.out
+	echo "% readelf -x 27 elfsamp" > readelf-x.out
+	readelf -x 27 elfsamp >> readelf-x.out
 	echo "% " >> readelf-x.out
 
 readelf-o-h.out :	elfsamp
@@ -61,13 +61,13 @@ readelf-o-h.out :	elfsamp
 
 readelf-o-S.out :	elfsamp
 	echo "% readelf -S elfsamp.o" > readelf-o-S.out
-	readelf -S elfsamp.o >> readelf-o-S.out
+	readelf -S -W elfsamp.o >> readelf-o-S.out
 	echo "% " >> readelf-o-S.out
 
-readelf-o-s.out :	elfsamp
-	echo "% readelf -s elfsamp.o" > readelf-o-s.out
-	readelf -s elfsamp.o >> readelf-o-s.out
-	echo "% " >> readelf-o-s.out
+readelf-o-s2.out :	elfsamp
+	echo "% readelf -s elfsamp.o" > $@
+	readelf -s elfsamp.o >> $@
+	echo "% " >> $@
 
 readelf-o-r.out :	elfsamp
 	echo "% readelf -r elfsamp.o" > readelf-o-r.out
@@ -76,12 +76,12 @@ readelf-o-r.out :	elfsamp
 
 readelf-o-l.out :	elfsamp
 	echo "% readelf -l elfsamp.o" > readelf-o-l.out
-	readelf -l elfsamp.o >> readelf-o-l.out
+	readelf -l -W elfsamp.o >> readelf-o-l.out
 	echo "% " >> readelf-o-l.out
 
 readelf-o-x.out :	elfsamp
-	echo "% readelf -x 8 elfsamp.o" > readelf-o-x.out
-	readelf -x 8 elfsamp.o >> readelf-o-x.out
+	echo "% readelf -x 10 elfsamp.o" > readelf-o-x.out
+	readelf -x 10 elfsamp.o >> readelf-o-x.out
 	echo "% " >> readelf-o-x.out
 
 text_off-o-S.out :	readelf-o-S.out

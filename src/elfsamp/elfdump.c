@@ -5,6 +5,8 @@
 #include <elf.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#include <string.h>
+#include "../linuxelf.h"
 
 static int elfdump(char *head)
 {
@@ -71,7 +73,7 @@ static int elfdump(char *head)
     for (j = 0; j < sym->sh_size / sym->sh_entsize; j++) {
       symp = (Elf_Sym *)(head + sym->sh_offset + sym->sh_entsize * j);
       if (!symp->st_name) continue;
-      printf("\t[%d]\t%d\t%d\t%s\n",
+      printf("\t[%d]\t%d\t%ld\t%s\n",
 	     j, (int)ELF_ST_TYPE(symp->st_info), symp->st_size,
 	     (char *)(head + str->sh_offset + symp->st_name));
     }
@@ -88,7 +90,7 @@ static int elfdump(char *head)
       symp = (Elf_Sym *)(head + sym->sh_offset +
 			 (sym->sh_entsize * ELF_R_SYM(relp->r_info)));
       if (!symp->st_name) continue;
-      printf("\t[%d]\t%d\t%s\n",
+      printf("\t[%d]\t%ld\t%s\n",
 	     j, ELF_R_SYM(relp->r_info),
 	     (char *)(head + str->sh_offset + symp->st_name));
     }

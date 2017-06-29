@@ -2,38 +2,41 @@
 Sections:
 	[0]	
 	[1]	.text
-	[2]	.rel.text
+	[2]	.rela.text
 	[3]	.data
 	[4]	.bss
-	[5]	.note
-	[6]	.rodata
-	[7]	.comment
-	[8]	.shstrtab
-	[9]	.symtab
-	[10]	.strtab
+	[5]	.rodata
+	[6]	.comment
+	[7]	.note.GNU-stack
+	[8]	.eh_frame
+	[9]	.rela.eh_frame
+	[10]	.shstrtab
+	[11]	.symtab
+	[12]	.strtab
 Segments:
 Symbols:
 	[1]	4	0	elfsamp.c
-	[5]	0	0	gcc2_compiled.
+	[5]	1	4	s1
 	[6]	1	4	s2
-	[8]	2	63	sfunc
-	[9]	1	4	s1
-	[12]	1	4	g2
-	[13]	1	4	g3
-	[14]	0	0	efunc
-	[15]	1	4	g1
+	[8]	2	71	sfunc
+	[12]	1	4	g1
+	[13]	1	4	g2
+	[14]	1	4	g3
+	[15]	0	0	efunc
 	[16]	0	0	e3
-	[17]	2	60	gfunc
-	[18]	0	0	__stdoutp
-	[19]	0	0	fprintf
+	[17]	2	79	gfunc
+	[18]	0	0	stdout
+	[19]	0	0	fwrite
 Relocations:
-	[0]	14	efunc
-	[3]	12	g2
-	[4]	15	g1
-	[5]	16	e3
-	[6]	14	efunc
+	[0]	15	efunc
+	[4]	13	g2
+	[5]	13	g2
+	[6]	12	g1
 	[7]	16	e3
-	[8]	15	g1
-	[10]	18	__stdoutp
-	[11]	19	fprintf
+	[8]	15	efunc
+	[9]	16	e3
+	[10]	16	e3
+	[11]	12	g1
+	[12]	18	stdout
+	[14]	19	fwrite
 % 

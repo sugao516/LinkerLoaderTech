@@ -1,12 +1,13 @@
 % readelf -r elfsamp
 
-Relocation section '.rel.bss' at offset 0x370 contains 1 entries:
- Offset     Info    Type            Sym.Value  Sym. Name
-080496d4  00000105 R_386_COPY        080496d4   __stdoutp
+Relocation section '.rela.dyn' at offset 0x3c8 contains 3 entries:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+000000600ff0  000100000006 R_X86_64_GLOB_DAT 0000000000000000 __libc_start_main@GLIBC_2.2.5 + 0
+000000600ff8  000200000006 R_X86_64_GLOB_DAT 0000000000000000 __gmon_start__ + 0
+000000601038  000500000005 R_X86_64_COPY     0000000000601038 stdout@GLIBC_2.2.5 + 0
 
-Relocation section '.rel.plt' at offset 0x378 contains 3 entries:
- Offset     Info    Type            Sym.Value  Sym. Name
-080496c8  00000507 R_386_JUMP_SLOT   080483ac   fprintf
-080496cc  00000b07 R_386_JUMP_SLOT   080483bc   atexit
-080496d0  00000f07 R_386_JUMP_SLOT   080483cc   exit
+Relocation section '.rela.plt' at offset 0x410 contains 2 entries:
+  Offset          Info           Type           Sym. Value    Sym. Name + Addend
+000000601018  000300000007 R_X86_64_JUMP_SLO 0000000000000000 exit@GLIBC_2.2.5 + 0
+000000601020  000400000007 R_X86_64_JUMP_SLO 0000000000000000 fwrite@GLIBC_2.2.5 + 0
 % 
