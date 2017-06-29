@@ -1,4 +1,3 @@
 % nm const_sub.o
-00000000 R a
-00000000 t gcc2_compiled.
+0000000000000000 R a
 % 

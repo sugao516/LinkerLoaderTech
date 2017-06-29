@@ -23,9 +23,9 @@ const :	const.o const_sub.o
 	echo "% " >> const.comp
 
 noconst :	const.o const_sub.o
-	echo "% gcc const.o const_sub.o -Wall -o noconst -T elf_i386.x.noconst" \
+	echo "% gcc const.o const_sub.o -Wall -o noconst -T elf_x86_64.x.noconst" \
 		> noconst.comp
-	gcc const.o const_sub.o -Wall -o noconst -T elf_i386.x.noconst \
+	gcc const.o const_sub.o -Wall -o noconst -T elf_x86_64.x.noconst \
 		>> noconst.comp 2>&1
 	echo "% " >> noconst.comp
 
@@ -42,8 +42,8 @@ noconst.exec :	noconst
 	sleep 1
 	echo "% " >> noconst.exec
 
-elf_i386.diff :	elf_i386.x elf_i386.x.noconst
-	diff -u elf_i386.x elf_i386.x.noconst > elf_i386.diff &
+elf_i386.diff :	elf_x86_64.x elf_x86_64.x.noconst
+	diff -u elf_x86_64.x elf_x86_64.x.noconst > elf_i386.diff &
 	sleep 1
 
 const_sub.o.nm :	const_sub.o
@@ -53,10 +53,7 @@ const_sub.o.nm :	const_sub.o
 
 const.nm :	const
 	echo "% nm const" > const.nm
-	nm const | head -n 3 >> const.nm
-	cat ../../ellipsis.txt >> const.nm
-	nm const | head -n 25 | tail -n 11 >> const.nm
-	cat ../../rest.txt >> const.nm
+	nm const >> const.nm
 
 const.a.nm :	const
 	echo -n "0x" > const.a.nm
@@ -64,9 +61,7 @@ const.a.nm :	const
 
 noconst.nm :	noconst
 	echo "% nm noconst" > noconst.nm
-	cat ../../ellipsis.txt >> noconst.nm
-	nm noconst | head -n 23 | tail -n 7 >> noconst.nm
-	cat ../../rest.txt >> noconst.nm
+	nm noconst >> noconst.nm
 
 noconst.a.nm :	noconst
 	echo -n "0x" > noconst.a.nm
@@ -74,17 +69,11 @@ noconst.a.nm :	noconst
 
 const.od :	const
 	echo "% objdump -h const" > const.od
-	objdump -h const | head -n 7 >> const.od
-	cat ../../ellipsis.txt >> const.od
-	objdump -h const | head -n 29 | tail -n 6 >> const.od
-	cat ../../rest.txt >> const.od
+	objdump -h const >> const.od
 
 noconst.od :	noconst
 	echo "% objdump -h noconst" > noconst.od
-	objdump -h noconst | head -n 7 >> noconst.od
-	cat ../../ellipsis.txt >> noconst.od
-	objdump -h noconst | head -n 29 | tail -n 6 >> noconst.od
-	cat ../../rest.txt >> noconst.od
+	objdump -h noconst >> noconst.od
 
 const.od.rodata :	const
 	echo -n "0x" > const.od.rodata
@@ -163,5 +152,5 @@ const_b2.exec :	const_b2
 	echo "% " >> const_b2.exec
 
 clean :
-	rm -f $(OBJS) *.comp
+	rm -f $(OBJS) *.comp *.out *.o
 

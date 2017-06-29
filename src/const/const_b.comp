@@ -1,4 +1,5 @@
 % gcc const_b.o const_sub.o -Wall -o const_b
 const_b.o: In function `main':
-const_b.o(.text+0xa): undefined reference to `b'
+const_b.c:(.text+0x6): undefined reference to `b'
+collect2: error: ld returned 1 exit status
 % 

@@ -1,6 +1,6 @@
---- elf_i386.x	Wed May 12 13:46:20 2004
-+++ elf_i386.x.noconst	Wed May 12 13:46:20 2004
-@@ -55,8 +55,8 @@
+--- elf_x86_64.x	2017-06-29 23:11:22.651936400 +0900
++++ elf_x86_64.x.noconst	2017-05-29 01:39:38.723550800 +0900
+@@ -70,8 +70,8 @@
    PROVIDE (__etext = .);
    PROVIDE (_etext = .);
    PROVIDE (etext = .);
@@ -8,10 +8,10 @@
 -  .rodata1        : { *(.rodata1) }
 +  .rodata         : { }
 +  .rodata1        : { }
-   .eh_frame_hdr : { *(.eh_frame_hdr) }
-   /* Adjust the address for the data segment.  We want to adjust up to
-      the same address within the page on the next page up.  */
-@@ -78,6 +78,8 @@
+   .eh_frame_hdr : { *(.eh_frame_hdr) *(.eh_frame_entry .eh_frame_entry.*) }
+   .eh_frame       : ONLY_IF_RO { KEEP (*(.eh_frame)) *(.eh_frame.*) }
+   .gcc_except_table   : ONLY_IF_RO { *(.gcc_except_table
+@@ -149,6 +149,8 @@
    .data           :
    {
      *(.data .data.* .gnu.linkonce.d.*)

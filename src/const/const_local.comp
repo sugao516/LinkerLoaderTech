@@ -1,5 +1,6 @@
 % gcc const.o const_sub_local.o -Wall -o const_local
 const.o: In function `main':
-const.o(.text+0x8): undefined reference to `a'
-const.o(.text+0x14): undefined reference to `a'
+const.c:(.text+0x6): undefined reference to `a'
+const.c:(.text+0x10): undefined reference to `a'
+collect2: error: ld returned 1 exit status
 % 
