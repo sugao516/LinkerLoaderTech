@@ -23,10 +23,7 @@ pointer.nm :	pointer
 
 pointer.od :	pointer
 	echo "% objdump -h pointer" > pointer.od
-	objdump -h pointer | head -n 5 >> pointer.od
-	cat ../../ellipsis.txt >> pointer.od
-	objdump -h pointer | head -n 31 | tail -n 6 >> pointer.od
-	cat ../../rest.txt >> pointer.od
+	objdump -h pointer >> pointer.od
 
 s1.size :	pointer.exec
 	cat pointer.exec | grep "sizeof(s1)" | awk '{print $$3}' > s1.size
