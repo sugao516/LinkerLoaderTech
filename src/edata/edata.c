@@ -1,13 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-extern int __fini_array_end;
+extern int data_start;
 extern int edata;
 extern int end;
 
 int main()
 {
-  printf("&__fini_array_end = 0x%08x\n", (int)&__fini_array_end);
-  printf("&edata            = 0x%08x\n", (int)&edata);
-  printf("&end              = 0x%08x\n", (int)&end);
+  printf("&data_start       = %p\n", &data_start);
+  printf("&edata            = %p\n", &edata);
+  printf("&end              = %p\n", &end);
   exit (0);
 }

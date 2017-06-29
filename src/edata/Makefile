@@ -14,12 +14,7 @@ edata.exec :	edata
 
 edata.od :	edata
 	echo "% objdump -h edata" > edata.od
-	objdump -h edata | head -n 5 >> edata.od
-	cat ../../ellipsis.txt >> edata.od
-	objdump -h edata | head -n 29 | tail -n 4 >> edata.od
-	cat ../../ellipsis.txt >> edata.od
-	objdump -h edata | head -n 43 | tail -n 4 >> edata.od
-	cat ../../rest.txt >> edata.od
+	objdump -h edata >> edata.od
 
 clean :
 	rm -f $(OBJS) *.comp
