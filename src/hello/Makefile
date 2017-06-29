@@ -11,7 +11,7 @@ hello :	hello.c
 	echo "% " >> gcc-v.out
 
 tmp_o.out : gcc-v.out
-	cat gcc-v.out | grep /usr/libexec/elf/ld | awk '{print $$11}' \
+	cat gcc-v.out | grep collect2 | awk '{print $$29}' \
 		> tmp_o.out
 
 size.out :	hello

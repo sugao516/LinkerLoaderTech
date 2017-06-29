@@ -1,22 +1,34 @@
 % gcc hello.c -Wall -o hello -v
-Using builtin specs.
-gcc version 2.95.4 20020320 [FreeBSD]
- /usr/libexec/cpp0 -lang-c -v -D__GNUC__=2 -D__GNUC_MINOR__=95 -Di386 -D__FreeBSD__=4 -D__FreeBSD_cc_version=460001 -Dunix -D__i386__ -D__FreeBSD__=4 -D__FreeBSD_cc_version=460001 -D__unix__ -D__i386 -D__unix -Acpu(i386) -Amachine(i386) -Asystem(unix) -Asystem(FreeBSD) -Wall -Acpu(i386) -Amachine(i386) -Di386 -D__i386 -D__i386__ -D__ELF__ hello.c /tmp/ccqnUJxp.i
-GNU CPP version 2.95.4 20020320 [FreeBSD] (i386 FreeBSD/ELF)
+Using built-in specs.
+COLLECT_GCC=gcc
+COLLECT_LTO_WRAPPER=/usr/libexec/gcc/x86_64-redhat-linux/6.3.1/lto-wrapper
+Target: x86_64-redhat-linux
+Configured with: ../configure --enable-bootstrap --enable-languages=c,c++,objc,obj-c++,fortran,ada,go,lto --prefix=/usr --mandir=/usr/share/man --infodir=/usr/share/info --with-bugurl=http://bugzilla.redhat.com/bugzilla --enable-shared --enable-threads=posix --enable-checking=release --enable-multilib --with-system-zlib --enable-__cxa_atexit --disable-libunwind-exceptions --enable-gnu-unique-object --enable-linker-build-id --with-linker-hash-style=gnu --enable-plugin --enable-initfini-array --disable-libgcj --with-isl --enable-libmpx --enable-gnu-indirect-function --with-tune=generic --with-arch_32=i686 --build=x86_64-redhat-linux
+Thread model: posix
+gcc version 6.3.1 20161221 (Red Hat 6.3.1-1) (GCC) 
+COLLECT_GCC_OPTIONS='-Wall' '-o' 'hello' '-v' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/6.3.1/cc1 -quiet -v hello.c -quiet -dumpbase hello.c -mtune=generic -march=x86-64 -auxbase hello -Wall -version -o /tmp/ccZJRvF8.s
+GNU C11 (GCC) version 6.3.1 20161221 (Red Hat 6.3.1-1) (x86_64-redhat-linux)
+	compiled by GNU C version 6.3.1 20161221 (Red Hat 6.3.1-1), GMP version 6.1.1, MPFR version 3.1.5, MPC version 1.0.2, isl version 0.14 or 0.13
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include-fixed"
+ignoring nonexistent directory "/usr/lib/gcc/x86_64-redhat-linux/6.3.1/../../../../x86_64-redhat-linux/include"
 #include "..." search starts here:
 #include <...> search starts here:
- /usr/include
+ /usr/lib/gcc/x86_64-redhat-linux/6.3.1/include
+ /usr/local/include
  /usr/include
 End of search list.
-The following default directories have been omitted from the search path:
- /usr/include/g++
-End of omitted list.
- /usr/libexec/cc1 /tmp/ccqnUJxp.i -quiet -dumpbase hello.c -Wall -version -o /tmp/ccbkxy21.s
-GNU C version 2.95.4 20020320 [FreeBSD] (i386-unknown-freebsd) compiled by GNU C version 2.95.4 20020320 [FreeBSD].
- /usr/libexec/elf/as -v -o /tmp/ccs4WTKL.o /tmp/ccbkxy21.s
-GNU assembler version 2.12.1 [FreeBSD] 2002-07-20 (i386-obrien-freebsd5.0) using BFD version 2.12.1 [FreeBSD] 2002-07-20
- /usr/libexec/elf/ld -V -dynamic-linker /usr/libexec/ld-elf.so.1 -o hello /usr/lib/crt1.o /usr/lib/crti.o /usr/lib/crtbegin.o -L/usr/lib /tmp/ccs4WTKL.o -lgcc -lc -lgcc /usr/lib/crtend.o /usr/lib/crtn.o
-GNU ld version 2.12.1 [FreeBSD] 2002-07-20
-  Supported emulations:
-   elf_i386
+GNU C11 (GCC) version 6.3.1 20161221 (Red Hat 6.3.1-1) (x86_64-redhat-linux)
+	compiled by GNU C version 6.3.1 20161221 (Red Hat 6.3.1-1), GMP version 6.1.1, MPFR version 3.1.5, MPC version 1.0.2, isl version 0.14 or 0.13
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 67626b9d441eed376539391e660a9413
+COLLECT_GCC_OPTIONS='-Wall' '-o' 'hello' '-v' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o /tmp/ccLH1N9H.o /tmp/ccZJRvF8.s
+GNU assembler version 2.26.1 (x86_64-redhat-linux) using BFD version version 2.26.1-1.fc25
+COMPILER_PATH=/usr/libexec/gcc/x86_64-redhat-linux/6.3.1/:/usr/libexec/gcc/x86_64-redhat-linux/6.3.1/:/usr/libexec/gcc/x86_64-redhat-linux/:/usr/lib/gcc/x86_64-redhat-linux/6.3.1/:/usr/lib/gcc/x86_64-redhat-linux/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-redhat-linux/6.3.1/:/usr/lib/gcc/x86_64-redhat-linux/6.3.1/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib/gcc/x86_64-redhat-linux/6.3.1/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-Wall' '-o' 'hello' '-v' '-mtune=generic' '-march=x86-64'
+ /usr/libexec/gcc/x86_64-redhat-linux/6.3.1/collect2 -plugin /usr/libexec/gcc/x86_64-redhat-linux/6.3.1/liblto_plugin.so -plugin-opt=/usr/libexec/gcc/x86_64-redhat-linux/6.3.1/lto-wrapper -plugin-opt=-fresolution=/tmp/ccxS1HEh.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --no-add-needed --eh-frame-hdr --hash-style=gnu -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o hello /usr/lib/gcc/x86_64-redhat-linux/6.3.1/../../../../lib64/crt1.o /usr/lib/gcc/x86_64-redhat-linux/6.3.1/../../../../lib64/crti.o /usr/lib/gcc/x86_64-redhat-linux/6.3.1/crtbegin.o -L/usr/lib/gcc/x86_64-redhat-linux/6.3.1 -L/usr/lib/gcc/x86_64-redhat-linux/6.3.1/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib/gcc/x86_64-redhat-linux/6.3.1/../../.. /tmp/ccLH1N9H.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-redhat-linux/6.3.1/crtend.o /usr/lib/gcc/x86_64-redhat-linux/6.3.1/../../../../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-Wall' '-o' 'hello' '-v' '-mtune=generic' '-march=x86-64'
 % 
