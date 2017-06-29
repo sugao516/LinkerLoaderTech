@@ -1,11 +1,11 @@
 % ls -l values
 -rwxr-xr-x  1 hiroaki  user  5327 10  3 14:22 values
 % file values
-values: ELF 32-bit LSB executable, Intel 80386, version 1 (FreeBSD), for FreeBSD 4.9.1, dynamically linked (uses shared libs), not stripped
+values: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=2e7a305092e7df977f771fffa62a2bd27889f08f, not stripped
 % strip values
 % ls -l values
 -rwxr-xr-x  1 hiroaki  user  3480 10  3 14:22 values
 % file values
-values: ELF 32-bit LSB executable, Intel 80386, version 1 (FreeBSD), for FreeBSD 4.9.1, dynamically linked (uses shared libs), stripped
+values: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=2e7a305092e7df977f771fffa62a2bd27889f08f, stripped
 % nm values
-/usr/libexec/elf/nm: values: no symbols
+nm: values: no symbols
