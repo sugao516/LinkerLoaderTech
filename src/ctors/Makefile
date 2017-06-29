@@ -19,10 +19,7 @@ ctors.nm :	ctors
 
 ctors.od :	ctors
 	echo "% objdump -h ctors" > ctors.od
-	objdump -h ctors | head -n 5 >> ctors.od
-	cat ../../ellipsis.txt >> ctors.od
-	objdump -h ctors | head -n 37 | tail -n 4 >> ctors.od
-	cat ../../rest.txt >> ctors.od
+	objdump -h ctors >> ctors.od
 
 clean :
 	rm -f $(OBJS) *.comp
