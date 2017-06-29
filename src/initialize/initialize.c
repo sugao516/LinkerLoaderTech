@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-extern char __fini_array_end, edata, end;
+extern char data_start, edata, end;
 
 int i0, i1 = 1;
 double d0, d1 = 0.1;
@@ -11,9 +12,9 @@ char *s0, *s1 = "sample string";
 char * save_ivalue()
 {
   char * p;
-  int size = &edata - &__fini_array_end;
+  int size = &edata - &data_start;
   p = malloc(size);
-  memcpy(p, &__fini_array_end, size); /* ¥Ç¡¼¥¿ÎÎ°è¤òÂàÈò¤¹¤ë */
+  memcpy(p, &data_start, size); /* ¥Ç¡¼¥¿ÎÎ°è¤òÂàÈò¤¹¤ë */
   return (p);
 }
 
@@ -21,7 +22,7 @@ char * save_ivalue()
 void reset_ivalue(char * p)
 {
   /* ¥Ç¡¼¥¿ÎÎ°è¤òÉü¸µ */
-  memcpy(&__fini_array_end, p, (&edata - &__fini_array_end));
+  memcpy(&data_start, p, (&edata - &data_start));
 
   /* BSS ÎÎ°è¤ò¥¼¥í¥¯¥ê¥¢¤¹¤ë */
   memset(&edata, 0, (&end - &edata));
