@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 void samp11();
 
 int main()

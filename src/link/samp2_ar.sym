@@ -1,13 +1,13 @@
 % ./ardump samp2_ar | grep samp
-	[47]	4	0	samp1.c
-	[49]	4	0	samp2.c
-	[51]	4	0	samp3.c
-	[53]	4	0	samp4.c
-	[55]	2	5	samp32
-	[57]	2	13	samp22
-	[58]	2	13	samp11
-	[59]	2	5	samp41
-	[68]	2	5	samp21
-	[71]	2	13	samp31
-	[72]	2	5	samp12
-	[76]	2	5	samp42
+	[37]	4	0	samp1.c
+	[38]	4	0	samp2.c
+	[39]	4	0	samp3.c
+	[40]	4	0	samp4.c
+	[53]	2	17	samp31
+	[55]	2	7	samp41
+	[58]	2	17	samp11
+	[60]	2	7	samp21
+	[65]	2	7	samp32
+	[70]	2	7	samp42
+	[75]	2	7	samp12
+	[77]	2	17	samp22
