@@ -1,5 +1,11 @@
 % gcc -c rasm.c -Wall
-rasm.c:5: warning: `dummy_value' defined but not used
-rasm.c:6: warning: `dummy_bssvalue' defined but not used
-rasm.c:11: warning: `dummy_func' defined but not used
+rasm.c:11:13: warning: 'dummy_func' defined but not used [-Wunused-function]
+ static void dummy_func() {}
+             ^~~~~~~~~~
+rasm.c:6:12: warning: 'dummy_bssvalue' defined but not used [-Wunused-variable]
+ static int dummy_bssvalue;
+            ^~~~~~~~~~~~~~
+rasm.c:5:12: warning: 'dummy_value' defined but not used [-Wunused-variable]
+ static int dummy_value = 3;
+            ^~~~~~~~~~~
 % gcc -c rasm2.c -Wall

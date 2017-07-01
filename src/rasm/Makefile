@@ -13,7 +13,7 @@ rasm.o :	rasm.c rasm2.c
 
 rasm.o.re :	rasm.o
 	echo "% readelf -S -r -s rasm.o" > rasm.o.re
-	readelf -S -r -s rasm.o >> rasm.o.re
+	readelf -S -r -s -W rasm.o >> rasm.o.re
 	echo "% " >> rasm.o.re
 
 rasm2.o.re :	rasm2.o
@@ -23,13 +23,7 @@ rasm2.o.re :	rasm2.o
 
 rasm.re :	rasm
 	echo "% readelf -S -s rasm" > rasm.re
-	readelf -S -s rasm | head -n 5 >> rasm.re
-	cat ../../ellipsis.txt >> rasm.re
-	readelf -S -s rasm | head -n 24 | tail -n 12 >> rasm.re
-	cat ../../ellipsis.txt >> rasm.re
-	readelf -S -s rasm | tail -n 80 | head -n 5 >> rasm.re
-	cat ../../ellipsis.txt >> rasm.re
-	readelf -S -s rasm | tail -n 33 >> rasm.re
+	readelf -S -s -W rasm >> rasm.re
 	echo "% " >> rasm.re
 
 rasm.o.ra :	rasm.o
@@ -44,9 +38,7 @@ rasm2.o.ra :	rasm2.o
 
 rasm.ra :	rasm
 	echo "% objdump -d rasm" > rasm.ra
-	cat ../../ellipsis.txt >> rasm.ra
-	objdump -d rasm | head -n 173 | tail -n 38 >> rasm.ra
-	cat ../../rest.txt >> rasm.ra
+	objdump -d rasm >> rasm.ra
 	echo "% " >> rasm.ra
 
 clean :
