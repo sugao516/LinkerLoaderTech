@@ -1,1 +1,1 @@
-% ld --format binary --oformat elf32-i386 -r binary.dat -o binary_tmp2.o
+% ld --format binary --oformat elf64-x86-64 -r binary.dat -o binary_tmp2.o

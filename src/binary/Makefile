@@ -36,8 +36,8 @@ binary2.exec :	binary2
 	echo "% " >> binary2.exec
 
 binary3 :	binary.o binary.dat
-	echo "% ld --format binary --oformat elf32-i386 -r binary.dat -o binary_tmp2.o" > binary3.comp
-	ld --format binary --oformat elf32-i386 -r binary.dat -o binary_tmp2.o >> binary3.comp 2>&1
+	echo "% ld --format binary --oformat elf64-x86-64 -r binary.dat -o binary_tmp2.o" > binary3.comp
+	ld --format binary --oformat elf64-x86-64 -r binary.dat -o binary_tmp2.o >> binary3.comp 2>&1
 	echo "% ld -r -T bindata.scr binary_tmp2.o -o binary_tmp3.o" > binary3_2.comp
 	ld -r -T bindata.scr binary_tmp2.o -o binary_tmp3.o >> binary3_2.comp 2>&1
 	echo "% gcc binary.o binary_tmp3.o -o binary3" > binary3_3.comp
@@ -59,10 +59,7 @@ binary.nm :	binary
 
 binary.od :	binary
 	echo "% objdump -h binary" > binary.od
-	objdump -h binary | head -n 5 >> binary.od
-	cat ../../ellipsis.txt >> binary.od
-	objdump -h binary | head -n 31 | tail -n 2 >> binary.od
-	cat ../../rest.txt >> binary.od
+	objdump -h binary >> binary.od
 
 clean :
 	rm -f $(OBJS) *.o *.comp

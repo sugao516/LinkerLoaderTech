@@ -1,5 +1,5 @@
 % ./binary2
-__start_bindata = 0x0804866b
-__stop_bindata  = 0x08048679
+__start_bindata = 0x4006ac
+__stop_bindata  = 0x4006ba
 This is test.
 % 
