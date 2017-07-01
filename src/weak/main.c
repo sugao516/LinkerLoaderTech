@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void sample_func_pragma1();
 void sample_func_pragma2();
