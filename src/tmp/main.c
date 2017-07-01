@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 void test1();
 
 int main()

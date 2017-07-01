@@ -1,3 +1,4 @@
 % gcc main.o -ltest2 -ltest1 -L. -o reverse_a -Wall
 ./libtest1.a(test1.o): In function `test1':
-test1.o(.text+0x7): undefined reference to `test2'
+test1.c:(.text+0xa): undefined reference to `test2'
+collect2: error: ld returned 1 exit status
