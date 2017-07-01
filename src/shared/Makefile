@@ -52,43 +52,40 @@ sample_shared.ldd :	sample_shared
 
 sample_pic.o.re :	libsample.so
 	echo "% readelf -a sample_pic.o" > sample_pic.o.re
-	readelf -a sample_pic.o >> sample_pic.o.re
+	readelf -a -W sample_pic.o >> sample_pic.o.re
 	echo "% " >> sample_pic.o.re
 
 libsample.so.1.re :	libsample.so.1
 	echo "% readelf -a libsample.so.1" > libsample.so.1.re
-	readelf -a libsample.so.1 >> libsample.so.1.re
+	readelf -a -W libsample.so.1 >> libsample.so.1.re
 	echo "% " >> libsample.so.1.re
 
 sample_shared.re :	sample_shared
 	echo "% readelf -a sample_shared" > sample_shared.re
-	readelf -a sample_shared >> sample_shared.re
+	readelf -a -W sample_shared >> sample_shared.re
 	echo "% " >> sample_shared.re
 
 sample.o.re :	sample.o
 	echo "% readelf -a sample.o" > sample.o.re
-	readelf -a sample.o >> sample.o.re
+	readelf -a -W sample.o >> sample.o.re
 	echo "% " >> sample.o.re
 
 sample_static.re :	sample_static
 	echo "% readelf -a sample_static" > sample_static.re
-	readelf -a sample_static >> sample_static.re
+	readelf -a -W sample_static >> sample_static.re
 	echo "% " >> sample_static.re
 
 sample_pic.o.ra :	sample_pic.o
 	echo "objdump -d sample_pic.o" > sample_pic.o.ra
-	objdump -d sample_pic.o | head -n 27 >> sample_pic.o.ra
-	cat ../../rest.txt >> sample_pic.o.ra
+	objdump -d sample_pic.o >> sample_pic.o.ra
 
 libsample.so.1.ra :	libsample.so.1
 	echo "% objdump -d libsample.so.1" > libsample.so.1.ra
-	objdump -d libsample.so.1 | head -n 28 >> libsample.so.1.ra
-	cat ../../rest.txt >> libsample.so.1.ra
+	objdump -d libsample.so.1 >> libsample.so.1.ra
 
 sample_shared.ra :	sample_shared
 	echo "% objdump -d sample_shared" > sample_shared.ra
-	objdump -d sample_shared | head -n 31 >> sample_shared.ra
-	cat ../../rest.txt >> sample_shared.ra
+	objdump -d sample_shared >> sample_shared.ra
 
 sample_static.ra :	sample_static
 	echo "% objdump -d sample_static" > sample_static.ra
@@ -96,18 +93,18 @@ sample_static.ra :	sample_static
 	echo "% " >> sample_static.ra
 
 libsample.so.1.got :	libsample.so.1
-	echo "% readelf -x 17 libsample.so.1" > libsample.so.1.got
-	readelf -x 17 libsample.so.1 >> libsample.so.1.got
+	echo "% readelf -x 22 libsample.so.1" > libsample.so.1.got
+	readelf -x 22 libsample.so.1 >> libsample.so.1.got
 	echo "% " >> libsample.so.1.got
 
 sample_shared.got :	sample_shared
-	echo "% readelf -x 18 sample_shared" > sample_shared.got
-	readelf -x 18 sample_shared >> sample_shared.got
+	echo "% readelf -x 22 sample_shared" > sample_shared.got
+	readelf -x 22 sample_shared >> sample_shared.got
 	echo "% " >> sample_shared.got
 
 dlopen :	dlopen.c
 	echo "% gcc dlopen.c -o dlopen" > dlopen.comp
-	gcc dlopen.c -o dlopen >> dlopen.comp 2>&1
+	gcc dlopen.c -o dlopen -ldl >> dlopen.comp 2>&1
 	echo "% " >> dlopen.comp
 
 dlopen.exec :	dlopen
