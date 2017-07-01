@@ -1,4 +1,5 @@
 #include <elf.h>
+#include "../linuxelf.h"
 
 struct obj {
   char *filename;

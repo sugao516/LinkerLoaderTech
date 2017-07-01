@@ -20,9 +20,9 @@ int main(int argc, char *argv[])
   funcname = argv[1];
 
   /* 4KBでアラインメントする */
-  p = (char *)(((unsigned int)p + 4095) & ~4095);
+  p = (char *)(((unsigned long)p + 4095) & ~4095);
 
-  fprintf(stderr, "base address is 0x%08x\n", (int)buffer);
+  fprintf(stderr, "base address is %p\n", buffer);
   for (n = 0, i = 2; i < argc; n++, i++) {
     objs[n].filename = argv[i];
     fp = fopen(objs[n].filename, "rb");
@@ -31,13 +31,13 @@ int main(int argc, char *argv[])
       exit (1);
     }
     objs[n].address = p;
-    fprintf(stderr, "load to 0x%08x (%s)\n", (int)p, objs[n].filename);
+    fprintf(stderr, "load to %p (%s)\n", p, objs[n].filename);
     while ((c = fgetc(fp)) != EOF) {
       *(p++) = c;
     }
     fclose(fp);
 
-    p = (char *)(((unsigned int)p + 15) & ~15);
+    p = (char *)(((unsigned long)p + 15) & ~15);
 
     check_ehdr((Elf_Ehdr *)objs[n].address);
     relocate_common_symbol((Elf_Ehdr *)objs[n].address);
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     }
 
     /* 一応16バイトでアラインメントする */
-    p = (char *)(((unsigned int)p + 15) & ~15);
+    p = (char *)(((unsigned long)p + 15) & ~15);
   }
   objs[n].filename = NULL;
   objs[n].address  = NULL;
@@ -60,8 +60,8 @@ int main(int argc, char *argv[])
   link_objs(objs);
   search_symbol(objs, funcname, &obj);
   f = (int (*)())obj.address;
-  fprintf(stderr, "\n%s is found at 0x%08x (%s).\n\n",
-	  funcname, (int)f, obj.filename);
+  fprintf(stderr, "\n%s is found at %p (%s).\n\n",
+	  funcname, f, obj.filename);
   ret = f();
   fprintf(stderr, "\n%s return (%d)\n", funcname, ret);
 

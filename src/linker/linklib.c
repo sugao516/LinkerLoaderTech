@@ -51,7 +51,7 @@ int search_symbol(struct obj objs[], char *name, struct obj *obj)
     head = (char *)ehdr;
 
     if (symtab->sh_entsize != sizeof(Elf_Sym)) {
-      fprintf(stderr, "Invalid entry size. (%d)\n", symtab->sh_entsize);
+      fprintf(stderr, "Invalid entry size. (%ld)\n", symtab->sh_entsize);
       exit (1);
     }
 
@@ -97,7 +97,7 @@ int relocate_common_symbol(Elf_Ehdr *ehdr)
   head = (char *)ehdr;
 
   if (symtab->sh_entsize != sizeof(Elf_Sym)) {
-    fprintf(stderr, "Invalid entry size. (%d)\n", symtab->sh_entsize);
+    fprintf(stderr, "Invalid entry size. (%ld)\n", symtab->sh_entsize);
     exit (1);
   }
 
@@ -125,7 +125,7 @@ static int link_symbol(struct obj objs[], int objnum, Elf_Ehdr *ehdr,
 		       Elf_Shdr *reltab, Elf_Shdr *defsec,
 		       Elf_Shdr *symtab, Elf_Shdr *strtab)
 {
-  int i, addr, addend;
+  long i, addr, addend;
   char *head;
   unsigned int *addp;
   Elf_Shdr *shdr;
@@ -155,7 +155,7 @@ static int link_symbol(struct obj objs[], int objnum, Elf_Ehdr *ehdr,
 	fprintf(stderr, "%-12s", "unknown");
       }
       search_symbol(objs, (char *)(head + strtab->sh_offset + symp->st_name), &obj);
-      addr = (int)obj.address;
+      addr = (long)obj.address;
       fprintf(stderr, "%-10s ", obj.filename);
       break;
     case SHN_ABS:
@@ -167,7 +167,7 @@ static int link_symbol(struct obj objs[], int objnum, Elf_Ehdr *ehdr,
       if (!symp->st_name) {
 	fprintf(stderr, "%-12s ", get_section_name(ehdr, shdr));
       }
-      addr = (int)(head + shdr->sh_offset + symp->st_value);
+      addr = (long)(head + shdr->sh_offset + symp->st_value);
       fprintf(stderr, "internal   ");
       break;
     }
@@ -188,7 +188,7 @@ static int link_symbol(struct obj objs[], int objnum, Elf_Ehdr *ehdr,
       break;
     }
 
-    fprintf(stderr, "%08x %08x %08x ", addend, (int)addp, addr);
+    fprintf(stderr, "%08lx %08lx %08lx ", addend, (long)addp, addr);
 
     /*
      * 各種の再配置種別に対して，値の補填を行う．ほんとはもっと
@@ -197,14 +197,18 @@ static int link_symbol(struct obj objs[], int objnum, Elf_Ehdr *ehdr,
     switch (ELF_R_TYPE(relp->r_info)) {
     case R_386_PC32:
       fprintf(stderr, "R_386_PC32\n");
-      *addp = addend + (addr - (int)addp);
+      *addp = addend + (addr - (long)addp);
       break;
     case R_386_32:
       fprintf(stderr, "R_386_32\n");
       *addp = addend + addr;
       break;
+    case R_386_GOTPC:
+      fprintf(stderr, "R_386_GOTPC\n");
+      *addp = addend + addr;
+      break;
     default:
-      fprintf(stderr, "unknown(%d)\n", ELF_R_TYPE(relp->r_info));
+      fprintf(stderr, "unknown(%ld)\n", ELF_R_TYPE(relp->r_info));
     }
   }
 

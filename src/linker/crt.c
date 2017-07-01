@@ -1,4 +1,8 @@
+#if	0
 #define SYS_exit 1 /* sys/syscall.h */
+#else
+#include <sys/syscall.h>
+#endif
 
 int syscall();
 extern int main(int, char **, char **);
@@ -22,6 +26,7 @@ _start(char *arguments, ...)
     char **env;
 
     argv = &arguments;
+    argv += 28 + 1;
     argc = * (int *) (argv - 1);
     env = argv + argc + 1;
 

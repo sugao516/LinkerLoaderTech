@@ -64,12 +64,12 @@ sample2.exec :	linker.exec
 
 sample.readelf :	sample
 	echo "% readelf -a ./sample" > sample.readelf
-	readelf -a ./sample >> sample.readelf 2>&1
+	readelf -a -W ./sample >> sample.readelf 2>&1
 	echo "% " >> sample.readelf
 
 sample2.readelf :	linker.exec
 	echo "% readelf -a ./sample2" > sample2.readelf
-	readelf -a ./sample2 >> sample2.readelf 2>&1
+	readelf -a -W ./sample2 >> sample2.readelf 2>&1
 	echo "% " >> sample2.readelf
 
 clean :

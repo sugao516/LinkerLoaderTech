@@ -1,99 +1,110 @@
 % readelf -a ./sample
 ELF Header:
-  Magic:   7f 45 4c 46 01 01 01 09 00 00 00 00 00 00 00 00 
-  Class:                             ELF32
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
   Data:                              2's complement, little endian
   Version:                           1 (current)
-  OS/ABI:                            UNIX - FreeBSD
+  OS/ABI:                            UNIX - System V
   ABI Version:                       0
   Type:                              EXEC (Executable file)
-  Machine:                           Intel 80386
+  Machine:                           Advanced Micro Devices X86-64
   Version:                           0x1
-  Entry point address:               0x804832c
-  Start of program headers:          52 (bytes into file)
-  Start of section headers:          1740 (bytes into file)
+  Entry point address:               0x400406
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          5264 (bytes into file)
   Flags:                             0x0
-  Size of this header:               52 (bytes)
-  Size of program headers:           32 (bytes)
-  Number of program headers:         2
-  Size of section headers:           40 (bytes)
-  Number of section headers:         10
-  Section header string table index: 7
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         5
+  Size of section headers:           64 (bytes)
+  Number of section headers:         12
+  Section header string table index: 9
 
 Section Headers:
-  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
-  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
-  [ 1] .text             PROGBITS        08048074 000074 00044c 00  AX  0   0  4
-  [ 2] .rodata           PROGBITS        080484c0 0004c0 000094 00   A  0   0  4
-  [ 3] .data             PROGBITS        08049554 000554 000008 00  WA  0   0  4
-  [ 4] .bss              NOBITS          0804955c 00055c 000008 00  WA  0   0  4
-  [ 5] .comment          PROGBITS        00000000 00055c 0000c8 00      0   0  1
-  [ 6] .note             NOTE            00000000 000624 000064 00      0   0  1
-  [ 7] .shstrtab         STRTAB          00000000 000688 000043 00      0   0  1
-  [ 8] .symtab           SYMTAB          00000000 00085c 000270 10      9  1a  4
-  [ 9] .strtab           STRTAB          00000000 000acc 0000c7 00      0   0  1
+  [Nr] Name              Type            Address          Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            0000000000000000 000000 000000 00      0   0  0
+  [ 1] .note.gnu.build-id NOTE            0000000000400158 000158 000024 00   A  0   0  4
+  [ 2] .text             PROGBITS        000000000040017c 00017c 000481 00  AX  0   0  1
+  [ 3] .rodata           PROGBITS        00000000004005fd 0005fd 000090 00   A  0   0  1
+  [ 4] .eh_frame_hdr     PROGBITS        0000000000400690 000690 000064 00   A  0   0  4
+  [ 5] .eh_frame         PROGBITS        00000000004006f8 0006f8 000178 00   A  0   0  8
+  [ 6] .data             PROGBITS        0000000000601000 001000 000008 00  WA  0   0  4
+  [ 7] .bss              NOBITS          0000000000601008 001008 000008 00  WA  0   0  4
+  [ 8] .comment          PROGBITS        0000000000000000 001008 00002c 01  MS  0   0  1
+  [ 9] .shstrtab         STRTAB          0000000000000000 001426 000068 00      0   0  1
+  [10] .symtab           SYMTAB          0000000000000000 001038 000348 18     11  22  8
+  [11] .strtab           STRTAB          0000000000000000 001380 0000a6 00      0   0  1
 Key to Flags:
-  W (write), A (alloc), X (execute), M (merge), S (strings)
-  I (info), L (link order), G (group), x (unknown)
+  W (write), A (alloc), X (execute), M (merge), S (strings), l (large)
+  I (info), L (link order), G (group), T (TLS), E (exclude), x (unknown)
   O (extra OS processing required) o (OS specific), p (processor specific)
 
+There are no section groups in this file.
+
 Program Headers:
-  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
-  LOAD           0x000000 0x08048000 0x08048000 0x00554 0x00554 R E 0x1000
-  LOAD           0x000554 0x08049554 0x08049554 0x00008 0x00010 RW  0x1000
+  Type           Offset   VirtAddr           PhysAddr           FileSiz  MemSiz   Flg Align
+  LOAD           0x000000 0x0000000000400000 0x0000000000400000 0x000870 0x000870 R E 0x200000
+  LOAD           0x001000 0x0000000000601000 0x0000000000601000 0x000008 0x000010 RW  0x200000
+  NOTE           0x000158 0x0000000000400158 0x0000000000400158 0x000024 0x000024 R   0x4
+  GNU_EH_FRAME   0x000690 0x0000000000400690 0x0000000000400690 0x000064 0x000064 R   0x4
+  GNU_STACK      0x000000 0x0000000000000000 0x0000000000000000 0x000000 0x000000 RWE 0x10
 
  Section to Segment mapping:
   Segment Sections...
-   00     .text .rodata 
+   00     .note.gnu.build-id .text .rodata .eh_frame_hdr .eh_frame 
    01     .data .bss 
+   02     .note.gnu.build-id 
+   03     .eh_frame_hdr 
+   04     
 
-There is no dynamic segment in this file.
+There is no dynamic section in this file.
 
 There are no relocations in this file.
 
-There are no unwind sections in this file.
+The decoding of unwind sections for machine type Advanced Micro Devices X86-64 is not currently supported.
 
-Symbol table '.symtab' contains 39 entries:
-   Num:    Value  Size Type    Bind   Vis      Ndx Name
-     0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
-     1: 08048074     0 SECTION LOCAL  DEFAULT    1 
-     2: 080484c0     0 SECTION LOCAL  DEFAULT    2 
-     3: 08049554     0 SECTION LOCAL  DEFAULT    3 
-     4: 0804955c     0 SECTION LOCAL  DEFAULT    4 
-     5: 00000000     0 SECTION LOCAL  DEFAULT    5 
-     6: 00000000     0 SECTION LOCAL  DEFAULT    6 
-     7: 00000000     0 SECTION LOCAL  DEFAULT    7 
-     8: 00000000     0 SECTION LOCAL  DEFAULT    8 
-     9: 00000000     0 SECTION LOCAL  DEFAULT    9 
-    10: 00000000     0 FILE    LOCAL  DEFAULT  ABS main.c
-    11: 08048074     0 NOTYPE  LOCAL  DEFAULT    1 gcc2_compiled.
-    12: 00000000     0 FILE    LOCAL  DEFAULT  ABS sample.c
-    13: 08048108     0 NOTYPE  LOCAL  DEFAULT    1 gcc2_compiled.
-    14: 08049554     4 OBJECT  LOCAL  DEFAULT    3 value
-    15: 08048108   350 FUNC    LOCAL  DEFAULT    1 func
-    16: 0804955c     4 OBJECT  LOCAL  DEFAULT    4 bssvalue
-    17: 00000000     0 FILE    LOCAL  DEFAULT  ABS sample2.c
-    18: 080482c8     0 NOTYPE  LOCAL  DEFAULT    1 gcc2_compiled.
-    19: 00000000     0 FILE    LOCAL  DEFAULT  ABS crt.c
-    20: 080482f8     0 NOTYPE  LOCAL  DEFAULT    1 gcc2_compiled.
-    21: 080482f8    25 FUNC    LOCAL  DEFAULT    1 _exit
-    22: 00000000     0 FILE    LOCAL  DEFAULT  ABS service.c
-    23: 08048384     0 NOTYPE  LOCAL  DEFAULT    1 gcc2_compiled.
-    24: 08048384    38 FUNC    LOCAL  DEFAULT    1 _write
-    25: 080483ac    50 FUNC    LOCAL  DEFAULT    1 slen
-    26: 080483e0    54 FUNC    GLOBAL DEFAULT    1 print
-    27: 080482c8    46 FUNC    GLOBAL DEFAULT    1 extfunc
-    28: 080484b8     0 NOTYPE  GLOBAL DEFAULT    1 syscall
-    29: 08048268    94 FUNC    GLOBAL DEFAULT    1 sample_main
-    30: 08049558     4 OBJECT  GLOBAL DEFAULT    3 extvalue
-    31: 0804832c    85 FUNC    GLOBAL DEFAULT    1 _start
-    32: 0804955c     0 NOTYPE  GLOBAL DEFAULT  ABS __bss_start
-    33: 08048074   146 FUNC    GLOBAL DEFAULT    1 main
-    34: 08048418   157 FUNC    GLOBAL DEFAULT    1 printn
-    35: 0804955c     0 NOTYPE  GLOBAL DEFAULT  ABS _edata
-    36: 08049564     0 NOTYPE  GLOBAL DEFAULT  ABS _end
-    37: 08048314    23 FUNC    GLOBAL DEFAULT    1 exit
-    38: 08049560     4 OBJECT  GLOBAL DEFAULT    4 extbssvalue
+Symbol table '.symtab' contains 35 entries:
+   Num:    Value          Size Type    Bind   Vis      Ndx Name
+     0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+     1: 0000000000400158     0 SECTION LOCAL  DEFAULT    1 
+     2: 000000000040017c     0 SECTION LOCAL  DEFAULT    2 
+     3: 00000000004005fd     0 SECTION LOCAL  DEFAULT    3 
+     4: 0000000000400690     0 SECTION LOCAL  DEFAULT    4 
+     5: 00000000004006f8     0 SECTION LOCAL  DEFAULT    5 
+     6: 0000000000601000     0 SECTION LOCAL  DEFAULT    6 
+     7: 0000000000601008     0 SECTION LOCAL  DEFAULT    7 
+     8: 0000000000000000     0 SECTION LOCAL  DEFAULT    8 
+     9: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS main.c
+    10: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS sample.c
+    11: 0000000000601000     4 OBJECT  LOCAL  DEFAULT    6 value
+    12: 0000000000601008     4 OBJECT  LOCAL  DEFAULT    7 bssvalue
+    13: 0000000000400211   310 FUNC    LOCAL  DEFAULT    2 func
+    14: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS sample2.c
+    15: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS crt.c
+    16: 00000000004003cc    34 FUNC    LOCAL  DEFAULT    2 _exit
+    17: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS service.c
+    18: 00000000004004d5    47 FUNC    LOCAL  DEFAULT    2 _write
+    19: 0000000000400504    46 FUNC    LOCAL  DEFAULT    2 slen
+    20: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS 
+    21: 0000000000400690     0 NOTYPE  LOCAL  DEFAULT    4 __GNU_EH_FRAME_HDR
+    22: 0000000000400532    48 FUNC    GLOBAL DEFAULT    2 print
+    23: 000000000040039f    45 FUNC    GLOBAL DEFAULT    2 extfunc
+    24: 00000000004005e1     0 NOTYPE  GLOBAL DEFAULT    2 syscall
+    25: 0000000000400347    88 FUNC    GLOBAL DEFAULT    2 sample_main
+    26: 0000000000601004     4 OBJECT  GLOBAL DEFAULT    6 extvalue
+    27: 0000000000400406   207 FUNC    GLOBAL DEFAULT    2 _start
+    28: 0000000000601008     0 NOTYPE  GLOBAL DEFAULT    7 __bss_start
+    29: 000000000040017c   149 FUNC    GLOBAL DEFAULT    2 main
+    30: 0000000000400562   127 FUNC    GLOBAL DEFAULT    2 printn
+    31: 0000000000601008     0 NOTYPE  GLOBAL DEFAULT    6 _edata
+    32: 0000000000601010     0 NOTYPE  GLOBAL DEFAULT    7 _end
+    33: 00000000004003ee    24 FUNC    GLOBAL DEFAULT    2 exit
+    34: 000000000060100c     4 OBJECT  GLOBAL DEFAULT    7 extbssvalue
 
 No version information found in this file.
+
+Displaying notes found at file offset 0x00000158 with length 0x00000024:
+  Owner                 Data size	Description
+  GNU                  0x00000014	NT_GNU_BUILD_ID (unique build ID bitstring)
+    Build ID: 12a1eb666de0bb71ec20ba81318571e75ffecd17
 % 

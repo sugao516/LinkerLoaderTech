@@ -1,4 +1,8 @@
+#if	0
 #define SYS_write 4 /* sys/syscall.h */
+#else
+#include <sys/syscall.h>
+#endif
 
 int syscall();
 

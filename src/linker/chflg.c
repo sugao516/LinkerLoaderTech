@@ -5,6 +5,7 @@
 #include <elf.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#include "../linuxelf.h"
 
 static int chflg(char *head)
 {
