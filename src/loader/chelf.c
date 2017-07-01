@@ -10,6 +10,7 @@
 #include <sys/mman.h>
 #include <sys/param.h>
 #include <sys/procfs.h>
+#include "../linuxelf.h"
 
 static Elf_Phdr *get_phdr(Elf_Ehdr *ehdr, int num)
 {

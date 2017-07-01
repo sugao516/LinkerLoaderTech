@@ -5,6 +5,7 @@
 #include <elf.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#include "../linuxelf.h"
 
 static int chflg(char *head)
 {
@@ -38,17 +39,25 @@ static int chflg(char *head)
 
 int main(int argc, char *argv[])
 {
-  int fd;
+  int fd, size;
+  char *filename;
   struct stat sb;
   char *head;
 
-  fd = open(argv[1], O_RDWR);
+  if (argc < 2) {
+    fprintf(stderr, "specify filename.\n");
+    exit (1);
+  }
+
+  filename = argv[1];
+  fd = open(filename, O_RDWR);
   if (fd < 0) {
-    fprintf(stderr, "cannot open file.\n");
+    fprintf(stderr, "cannot open file. (%s)\n", filename);
     exit (1);
   }
   fstat(fd, &sb);
-  head = mmap(NULL, sb.st_size, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
+  size = sb.st_size;
+  head = mmap(NULL, size, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
 
   if (chflg(head) < 0) {
     fprintf(stderr, "fail to change flags.\n");

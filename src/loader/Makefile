@@ -7,17 +7,17 @@ all :	$(TARGET)
 
 ls.shdr :
 	echo "% readelf -S /bin/ls" > ls.shdr
-	readelf -S /bin/ls >> ls.shdr
+	readelf -S -W /bin/ls >> ls.shdr
 	echo "% " >> ls.shdr
 
 ls.phdr :
 	echo "% readelf -l /bin/ls" > ls.phdr
-	readelf -l /bin/ls >> ls.phdr
+	readelf -l -W /bin/ls >> ls.phdr
 	echo "% " >> ls.phdr
 
 gcc.shdr :
 	echo "% readelf -S /usr/bin/gcc" > gcc.shdr
-	readelf -S /usr/bin/gcc >> gcc.shdr
+	readelf -S -W /usr/bin/gcc >> gcc.shdr
 	echo "% " >> gcc.shdr
 
 chelf :	chelf.c
@@ -30,8 +30,8 @@ chflg :	chflg.c
 	gcc chflg.c -o chflg -Wall >> chflg.comp 2>&1
 	echo "% " >> chflg.comp
 
-ldscript.diff :	elf_i386.x space.scr
-	diff -u -U 7 elf_i386.x space.scr > ldscript.diff &
+ldscript.diff :	elf_x86_64.x space_x86_64.scr
+	diff -u -U 7 elf_x86_64.x space_x86_64.scr > ldscript.diff &
 	sleep 1
 
 sample :	sample.c
@@ -41,7 +41,7 @@ sample :	sample.c
 
 loader :	loader.c chflg
 	echo "% gcc loader.c -o loader -T space.scr -static -Wall" > loader.comp
-	gcc loader.c -o loader -T space.scr -static -Wall >> loader.comp 2>&1
+	gcc loader.c -o loader -T space_x86_64.scr -static -Wall >> loader.comp 2>&1
 	echo "% ./chflg loader" >> loader.comp
 	./chflg loader >> loader.comp 2>&1
 	echo "% " >> loader.comp

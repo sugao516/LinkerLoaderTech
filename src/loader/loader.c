@@ -5,6 +5,8 @@
 #include <elf.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#include <string.h>
+#include "../linuxelf.h"
 
 typedef void (*func_t)();
 
@@ -38,6 +40,17 @@ static Elf_Shdr *search_shdr(Elf_Ehdr *ehdr, char *name)
 
   fprintf(stderr, "cannot find shdr %s\n", name);
   return (NULL);
+}
+
+void my_save(char *pfx, char *vaddr, size_t filesz)
+{
+	char filename[128];
+  int fd;
+	sprintf(filename, "%s%p-%lx.dat", pfx, vaddr, filesz);
+  fd = open(filename, O_CREAT|O_WRONLY);
+//  fprintf(stderr, "open(%s)=%d\n", filename, fd);
+	write(fd, vaddr, filesz);
+	close(fd);
 }
 
 static func_t load_file(char *head)
@@ -80,6 +93,8 @@ static func_t load_file(char *head)
        * リンカスクリプトの設定でテキスト領域の先頭に空きを作っているため，
        * 自分自身を書き換えてしまうことはない．
        */
+    //	my_save("f-d", (char *)phdr->p_vaddr, phdr->p_filesz);
+    //	my_save("f-s", head + phdr->p_offset, phdr->p_filesz);
       memcpy((char *)phdr->p_vaddr, head + phdr->p_offset, phdr->p_filesz);
       fprintf(stderr, " (loaded)\n");
       break;
@@ -91,13 +106,13 @@ static func_t load_file(char *head)
   /* BSS領域をクリア */
   shdr = search_shdr(ehdr, ".bss");
   if (shdr) {
-    fprintf(stderr, "clear BSS: 0x%08x, 0x%08x\n",
+    fprintf(stderr, "clear BSS: 0x%08lx, 0x%08lx\n",
 	    shdr->sh_addr, shdr->sh_size);
     memset((char *)shdr->sh_addr, 0, shdr->sh_size);
   }
 
   f = (func_t)ehdr->e_entry;
-  fprintf(stderr, "Entry Point: 0x%08x\n", (int)f);
+  fprintf(stderr, "Entry Point: %p\n", f);
 
   return (f);
 }
@@ -133,6 +148,7 @@ int main(int argc, char *argv[])
   close(fd);
 
   fprintf(stderr, "jump to entry point.\n");
+//  fprintf(stderr, "&argv[1]=%p\n", &argv[1]);
 
   /*
    * エントリポイントにジャンプする前に，引数を準備する．
@@ -144,9 +160,15 @@ int main(int argc, char *argv[])
   asm volatile ("pushl %0" :: "m"(filename)); /* argv[0] = filename */
   asm volatile ("pushl $1");                  /* argc    = 1 */
 #else
-  argv[0] = (char *)(argc - 1);
+  argv[0] = (char *)(long)(argc - 1);
   stackp = &argv[0];
-  asm volatile ("movl %0,%%esp" :: "m"(stackp));
+//  argv[5] = argv[4];
+//  argv[4] = argv[3];
+//  argv[3] = argv[2];
+//  argv[2] = argv[1];
+//  argv[1] = (char *)(void *)(argc - 1);
+//  stackp = &argv[1];
+  asm volatile ("mov %0,%%rsp" :: "m"(stackp));
 #endif
 
   /*
