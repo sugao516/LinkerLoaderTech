@@ -22,10 +22,7 @@ section.nm :	section
 
 section.od :	section
 	echo "% objdump -h section" > section.od
-	objdump -h section | head -n 5 >> section.od
-	cat ../../ellipsis.txt >> section.od
-	objdump -h section | head -n 31 | tail -n 2 >> section.od
-	cat ../../rest.txt >> section.od
+	objdump -h section >> section.od
 
 clean :
 	rm -f $(OBJS) *.comp

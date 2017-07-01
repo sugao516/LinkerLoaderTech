@@ -1,6 +1,6 @@
 % ./section
-__start_test_section = 0x0804962c
-__stop_test_section  = 0x08049638
+__start_test_section = 0x601038
+__stop_test_section  = 0x601050
 init1
 init2
 init3
