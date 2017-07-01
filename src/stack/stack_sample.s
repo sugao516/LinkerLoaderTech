@@ -1,42 +1,41 @@
 	.file	"stack_sample.c"
-	.version	"01.01"
-gcc2_compiled.:
-.text
-	.p2align 2,0x90
-.globl func
-		.type		 func,@function
+	.text
+	.globl	func
+	.type	func, @function
 func:
-	pushl %ebp
-	movl %esp,%ebp
-	xorl %eax,%eax
-	jmp .L6
-	.p2align 2,0x90
-.L6:
-	leave
+.LFB2:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	%edi, -4(%rbp)
+	movl	%esi, -8(%rbp)
+	movl	$0, %eax
+	popq	%rbp
+	.cfi_def_cfa 7, 8
 	ret
-.Lfe1:
-		.size		 func,.Lfe1-func
-	.p2align 2,0x90
-.globl main
-		.type		 main,@function
+	.cfi_endproc
+.LFE2:
+	.size	func, .-func
+	.globl	main
+	.type	main, @function
 main:
-	pushl %ebp
-	movl %esp,%ebp
-	subl $8,%esp
-	addl $-12,%esp
-	addl $-8,%esp
-	pushl $2
-	pushl $1
-	call func
-	addl $16,%esp
-	movl %eax,%eax
-	pushl %eax
-	call exit
-	addl $16,%esp
-	.p2align 2,0x90
-.L7:
-	leave
-	ret
-.Lfe2:
-		.size		 main,.Lfe2-main
-	.ident	"GCC: (GNU) c 2.95.4 20020320 [FreeBSD]"
+.LFB3:
+	.cfi_startproc
+	pushq	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.cfi_def_cfa_register 6
+	movl	$2, %esi
+	movl	$1, %edi
+	call	func
+	movl	%eax, %edi
+	call	exit
+	.cfi_endproc
+.LFE3:
+	.size	main, .-main
+	.ident	"GCC: (GNU) 6.3.1 20161221 (Red Hat 6.3.1-1)"
+	.section	.note.GNU-stack,"",@progbits
