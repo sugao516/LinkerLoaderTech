@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int stext  = 1;
 int srdata = 1;
@@ -6,8 +7,8 @@ extern int sdata;
 
 int main()
 {
-  printf("&stext  = 0x%08x, stext  = 0x%08x\n", (int)&stext,  stext);
-  printf("&srdata = 0x%08x, srdata = 0x%08x\n", (int)&srdata, srdata);
-  printf("&sdata  = 0x%08x, sdata  = 0x%08x\n", (int)&sdata,  sdata);
+  printf("&stext  = %p, stext  = 0x%08x\n", &stext,  stext);
+  printf("&srdata = %p, srdata = 0x%08x\n", &srdata, srdata);
+  printf("&sdata  = %p, sdata  = 0x%08x\n", &sdata,  sdata);
   exit (0);
 }

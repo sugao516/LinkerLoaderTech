@@ -1,1 +1,9 @@
 % ./lma
+&value  = 0x12345678
+stext   = 0x8949ed31, etext   = 0x83480000
+sdata   = 0x00000000, edata   = 0x00000000
+&stext  = 0x8048200, &etext  = 0x8048432
+&srdata = 0x8048458, &erdata = 0x804852c
+&sdata  = 0x80486b8, &edata  = 0x80486bc
+&sbss   = 0x80488d8, &ebss   = 0x80488d9
+% 

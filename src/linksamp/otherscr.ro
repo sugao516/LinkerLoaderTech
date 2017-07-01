@@ -1,5 +1,6 @@
-% readelf -x 5 otherscr
+% readelf -x 15 otherscr
 
-Hex dump of section '.rodata':
-  0x080482d2                         00 0a642500 .%d..
+Hex dump of section '.got':
+  0x08048540 00000000 00000000 00000000 00000000 ................
+
 % 

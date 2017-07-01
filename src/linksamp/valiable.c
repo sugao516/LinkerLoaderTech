@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 extern char cvalue;
 extern short int svalue;
@@ -7,9 +8,9 @@ extern long int lvalue2;
 
 int main()
 {
-  printf("&cvalue  = 0x%08x, cvalue  = %d\n", (int)&cvalue,  (int)cvalue);
-  printf("&svalue  = 0x%08x, svalue  = %d\n", (int)&svalue,  (int)svalue);
-  printf("&lvalue  = 0x%08x, lvalue  = %d\n", (int)&lvalue,  (int)lvalue);
-  printf("&lvalue2 = 0x%08x, lvalue2 = %d\n", (int)&lvalue2, (int)lvalue2);
+  printf("&cvalue  = %p, cvalue  = %d\n", &cvalue,  (int)cvalue);
+  printf("&svalue  = %p, svalue  = %d\n", &svalue,  (int)svalue);
+  printf("&lvalue  = %p, lvalue  = %d\n", &lvalue,  (int)lvalue);
+  printf("&lvalue2 = %p, lvalue2 = %d\n", &lvalue2, (int)lvalue2);
   exit (0);
 }

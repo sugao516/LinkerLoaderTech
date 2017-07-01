@@ -1,11 +1,44 @@
 % nm addr
-08048724 A _DYNAMIC
-080487bc A _GLOBAL_OFFSET_TABLE_
-080487d8 ? __CTOR_END__
-
-        ...(ÃæÎ¬)...
-
-08048380 R srdata
-080480f4 T stext
-12345678 A value
+00000000080486c8 d _DYNAMIC
+00000000080486a0 d _GLOBAL_OFFSET_TABLE_
+00000000080484fc R _IO_stdin_used
+                 w _ITM_deregisterTMCloneTable
+                 w _ITM_registerTMCloneTable
+                 w _Jv_RegisterClasses
+0000000008048a00 r __FRAME_END__
+0000000008048624 r __GNU_EH_FRAME_HDR
+0000000008048898 d __JCR_END__
+0000000008048898 d __JCR_LIST__
+00000000080488a0 T __TMC_END__
+0000000008048688 D __data_start
+0000000008048280 t __do_global_dtors_aux
+00000000080488a0 t __do_global_dtors_aux_fini_array_entry
+0000000008048428 R __dso_handle
+0000000008048a48 t __frame_dummy_init_array_entry
+                 w __gmon_start__
+0000000008048a50 t __init_array_end
+0000000008048a48 t __init_array_start
+0000000008048400 T __libc_csu_fini
+0000000008048390 T __libc_csu_init
+                 U __libc_start_main@@GLIBC_2.2.5
+000000000804841c T _fini
+0000000008048404 T _init
+00000000080481d0 T _start
+00000000080488a8 b completed.6917
+0000000008048688 W data_start
+0000000008048200 t deregister_tm_clones
+00000000080488a9 B ebss
+000000000804868c D edata
+00000000080484fc R erdata
+0000000008048402 T etext
+                 U exit@@GLIBC_2.2.5
+00000000080482a0 t frame_dummy
+00000000080482c6 T main
+                 U printf@@GLIBC_2.2.5
+0000000008048240 t register_tm_clones
+00000000080488a8 B sbss
+0000000008048688 D sdata
+0000000008048428 R srdata
+00000000080481d0 T stext
+0000000012345678 A value
 % 

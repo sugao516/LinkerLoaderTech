@@ -1,6 +1,6 @@
 % ./valiable
-&cvalue  = 0x08048618, cvalue  = 1
-&svalue  = 0x0804861a, svalue  = 12345
-&lvalue  = 0x0804861c, lvalue  = 87654321
-&lvalue2 = 0x08048620, lvalue2 = 0
+&cvalue  = 0x80485f0, cvalue  = 1
+&svalue  = 0x80485f2, svalue  = 12345
+&lvalue  = 0x80485f4, lvalue  = 87654321
+&lvalue2 = 0x80485f8, lvalue2 = 0
 % 

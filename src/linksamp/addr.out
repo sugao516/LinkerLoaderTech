@@ -1,9 +1,9 @@
 % ./addr
 &value  = 0x12345678
-stext   = 0x83e58955, etext   = 0x87c035ff
-sdata   = 0xbfbff852, edata   = 0x00000001
-&stext  = 0x080480f4, &etext  = 0x08048310
-&srdata = 0x08048380, &erdata = 0x08048540
-&sdata  = 0x08048718, &edata  = 0x08048724
-&sbss   = 0x080487e8, &ebss   = 0x08048800
+stext   = 0x8949ed31, etext   = 0x83480000
+sdata   = 0x00000000, edata   = 0x00000000
+&stext  = 0x80481d0, &etext  = 0x8048402
+&srdata = 0x8048428, &erdata = 0x80484fc
+&sdata  = 0x8048688, &edata  = 0x804868c
+&sbss   = 0x80488a8, &ebss   = 0x80488a9
 % 

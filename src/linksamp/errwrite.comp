@@ -1,2 +1,0 @@
-% gcc overwrite.c -o errwrite -Wall
-% 

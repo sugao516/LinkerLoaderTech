@@ -1,5 +1,5 @@
 % ./conflict
-&stext  = 0x080480f4, stext  = 0x83e58955
-&srdata = 0x080485c8, srdata = 0x00000001
-&sdata  = 0x080485b8, sdata  = 0xbfbff84e
+&stext  = 0x80481d0, stext  = 0x8949ed31
+&srdata = 0x80485c8, srdata = 0x00000001
+&sdata  = 0x80485c0, sdata  = 0x00000000
 % 
