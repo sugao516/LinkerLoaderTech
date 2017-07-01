@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 void duptest1();
 
 int main()
