@@ -7,6 +7,7 @@
 #include <elf.h>
 #include <sys/stat.h>
 #include <sys/mman.h>
+#include "../linuxelf.h"
 
 typedef u_int16_t (*rh_t)(u_int16_t *);
 typedef u_int32_t (*rw_t)(u_int32_t *);
