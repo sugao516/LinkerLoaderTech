@@ -9,12 +9,13 @@ down :	down.c
 	echo "% " >> down.comp
 
 down.readelf :	down
-	readelf -S -l down > down.readelf
+	readelf -S -l -W down > down.readelf
 
 down.core :	down
 	echo "% ./down" > down.out
 	./down >> down.out 2>&1 &
 	sleep 2
+	mv core.* down.core
 	echo "Segmentation fault (core dumped)" >> down.out
 	echo "% ls *.core" >> down.out
 	ls *.core >> down.out
@@ -26,7 +27,7 @@ file.out :	down.core
 	echo "% " >> file.out
 
 core.readelf :	down.core
-	readelf -a down.core > core.readelf
+	readelf -a -W down.core > $@
 
 nm.out :	down
 	echo "% nm down | grep count" > nm.out
@@ -34,4 +35,4 @@ nm.out :	down
 	echo "% " >> nm.out
 
 clean :
-	rm -f $(TARGET) *.o *.core *.comp *.out
+	rm -f $(TARGET) *.o *.core core.* *.comp *.out
