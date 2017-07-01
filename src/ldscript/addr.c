@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 extern int *stext,  *etext;
 extern int *srdata, *erdata;
@@ -9,11 +10,11 @@ int dummy = 12345;
 
 int main()
 {
-  printf("*text = 0x%08x, 0x%08x\n", stext, etext);
-  printf("*data = 0x%08x, 0x%08x\n", sdata, edata);
-  printf("text  = 0x%08x, 0x%08x\n", (int)&stext,  (int)&etext);
-  printf("rdata = 0x%08x, 0x%08x\n", (int)&srdata, (int)&erdata);
-  printf("data  = 0x%08x, 0x%08x\n", (int)&sdata,  (int)&edata);
-  printf("bss   = 0x%08x, 0x%08x\n", (int)&sbss,   (int)&ebss);
+  printf("*text = %p, %p\n", stext, etext);
+  printf("*data = %p, %p\n", sdata, edata);
+  printf("text  = %p, %p\n", &stext,  &etext);
+  printf("rdata = %p, %p\n", &srdata, &erdata);
+  printf("data  = %p, %p\n", &sdata,  &edata);
+  printf("bss   = %p, %p\n", &sbss,   &ebss);
   exit (0);
 }

@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int stext = 1;
 extern int srdata;
 
 int main()
 {
-  printf("text  = %d, 0x%08x\n", stext,  (int)&stext);
-  printf("rdata = %d, 0x%08x\n", srdata, (int)&srdata);
+  printf("text  = %d, %p\n", stext,  &stext);
+  printf("rdata = %d, %p\n", srdata, &srdata);
   exit (0);
 }

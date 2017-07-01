@@ -41,4 +41,4 @@ all :
 	#----------------------------------------------------------------------
 
 clean :
-	rm -f *.comp *.out *.od
+	rm -f *.comp *.out *.od hello addr conflict provide

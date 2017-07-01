@@ -1,4 +1,4 @@
 % ./provide
-text  = 1, 0x080484f4
-rdata = 2019914752, 0x080482e6
+text  = 1, 0x8048564
+rdata = 0, 0x80483a8
 % 
