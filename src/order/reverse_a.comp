@@ -1,3 +1,4 @@
 % gcc ordermain.o -lorder2 -lorder1 -L. -o reverse_a -Wall
 ./liborder1.a(order1.o): In function `order1':
-order1.o(.text+0x17): undefined reference to `order2'
+order1.c:(.text+0x14): undefined reference to `order2'
+collect2: error: ld returned 1 exit status

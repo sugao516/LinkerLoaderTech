@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 void order1();
 
 int main()
